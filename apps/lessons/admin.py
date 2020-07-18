@@ -1,3 +1,7 @@
+# django Core
 from django.contrib import admin
+# Owner
+from .models import Lesson
 
-# Register your models here.
+admin.site.register(Lesson)
+
