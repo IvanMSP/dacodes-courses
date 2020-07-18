@@ -3,6 +3,7 @@ from django.db import models
 # Owner
 from reusable.models import TimeStampModel
 from reusable.constants import REQUIRED, BLANK
+from .choices import TYPE_QUESTION
 
 
 class Lesson(TimeStampModel):
@@ -19,3 +20,52 @@ class Lesson(TimeStampModel):
 
     def __str__(self):
         return self.title.title()
+
+
+class TypeQuestion(TimeStampModel):
+    type_question = models.PositiveSmallIntegerField(default=1, choices=TYPE_QUESTION)
+
+    def __str__(self):
+        return self.get_type_question_display()
+
+
+class Question(TimeStampModel):
+    title = models.CharField(max_length=120, **REQUIRED)
+    score = models.PositiveIntegerField()
+    type_question = models.ForeignKey(
+        TypeQuestion,
+        related_name='questions',
+        verbose_name='Type Question',
+        on_delete=models.CASCADE,
+        **REQUIRED
+    )
+    lesson = models.ForeignKey(
+        Lesson,
+        related_name='questions',
+        verbose_name='Lesson',
+        on_delete=models.CASCADE,
+        **REQUIRED
+    )
+
+    class Meta:
+        ordering = ('-created', )
+
+    def __str__(self):
+        return self.title.title()
+
+
+class Answer(TimeStampModel):
+    text = models.CharField(max_length=120, **REQUIRED)
+    question = models.ForeignKey(
+        Question,
+        related_name='answers',
+        verbose_name='Question',
+        on_delete=models.CASCADE,
+        **REQUIRED
+    )
+
+    class Meta:
+        ordering = ('-pk', )
+
+    def __str__(self):
+        return self.text
