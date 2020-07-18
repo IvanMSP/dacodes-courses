@@ -32,7 +32,7 @@ THIRDY_APPS = [
 OWNER_APPS = [
     'accounts.apps.AccountsConfig',
     'courses.apps.CoursesConfig',
-    'lessons.apps.Lessonsconfig',
+    'lessons.apps.LessonsConfig',
 ]
 
 INSTALLED_APPS =  DJANGO_APPS + THIRDY_APPS + OWNER_APPS
@@ -87,7 +87,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Owner User
-# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -130,4 +130,4 @@ PAGE_SIZE = 5
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Firebase
-FIREBASE_KEY =  config('FIREBASE_KEY')
+# FIREBASE_KEY =  config('FIREBASE_KEY')
