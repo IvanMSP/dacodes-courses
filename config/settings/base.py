@@ -30,7 +30,9 @@ THIRDY_APPS = [
 ]
 
 OWNER_APPS = [
-    
+    'accounts.apps.AccountsConfig',
+    'courses.apps.CoursesConfig',
+    'lessons.apps.Lessonsconfig',
 ]
 
 INSTALLED_APPS =  DJANGO_APPS + THIRDY_APPS + OWNER_APPS
