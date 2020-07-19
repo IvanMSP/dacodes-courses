@@ -1,6 +1,16 @@
 # DaCodes-courses
 
+# Used Frameworks 
+
+    Django for build backend 
+
+    Django rest framework for build api
+
 # Install
+
+Create virtual enviroment
+
+    virtualenv -p python3 env
 
 Clone the project and run the commands as show in the order inside the virtual enviroment.
 
