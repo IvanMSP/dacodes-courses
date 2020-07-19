@@ -2,6 +2,28 @@
 
 # Install
 
+Clone the project and run the commands as show in the order inside the virtual enviroment.
+
+1. Install all the requirements
+
+    `pip install -r requirements_develop.txt`
+
+2. Make migrations
+
+    `python manage.py makemigrations`
+
+3. Migrate the migrations
+
+    `python manage.py migrate`
+
+4. Create super user
+
+    `python manage.py createsuperuser`
+
+5. Run server
+
+    `python manage.py runserver`
+
 
 # Endpoints
     api/auth/  - Auth endpoint
