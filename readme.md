@@ -1,10 +1,16 @@
 # DaCodes-courses
 
-# Used Frameworks 
+# Used Frameworks and technologies
 
-    Django for build backend 
+    Django framework for build backend 
 
     Django rest framework for build api
+
+    Google Storage to store images
+
+    Postgres - DB for production and development
+
+    sqlite3 - DB for testing
 
 # Install
 
