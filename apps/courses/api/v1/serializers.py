@@ -2,11 +2,13 @@
 from rest_framework import serializers
 
 # Owner
-from ...models import Course
+from ...models import Course, Enrollment
 from accounts.api.v1.serializers import TeacherSerializer
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    teacher = TeacherSerializer()
+    scoreApproved = serializers.IntegerField(source='score_aproved')
 
     class Meta:
         model = Course
@@ -16,6 +18,7 @@ class CourseSerializer(serializers.ModelSerializer):
             'slug',
             'created',
             'teacher',
+            'scoreApproved'
         )
 
 
@@ -34,4 +37,16 @@ class CourseListSerializer(serializers.ModelSerializer):
             'scoreApproved',
             'previousCourse',
             'teacher',
+        )
+
+
+class EnrollmentSerializer(serializers.ModelSerializer):
+    student = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    course = CourseSerializer()
+    
+    class Meta:
+        model = Enrollment
+        fields = (
+            'student',
+            'course',
         )
