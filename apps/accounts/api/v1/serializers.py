@@ -26,3 +26,16 @@ class UserBaseSerializer(serializers.ModelSerializer):
             token.delete()
             token = Token.objects.create(user=user)
         return token.key 
+    
+
+class TeacherSerializer(serializers.ModelSerializer):
+    fullName = serializers.CharField(source='get_full_name')
+    isTeacher = serializers.BooleanField(source='is_teacher')
+
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'fullName',
+            'isTeacher',
+        )
