@@ -1,6 +1,7 @@
 # Django Core
 from django.db import models
 # Owner
+from accounts.models import User
 from courses.models import Course
 from reusable.models import TimeStampModel
 from reusable.constants import REQUIRED, BLANK
@@ -24,6 +25,11 @@ class Lesson(TimeStampModel):
         verbose_name='Course',
         on_delete=models.CASCADE,
         **REQUIRED
+    )
+    student = models.ManyToManyField(
+        User,
+        related_name='lessons',
+        verbose_name='Student',
     )
 
     def __str__(self):

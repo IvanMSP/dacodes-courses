@@ -4,26 +4,32 @@ from rest_framework import serializers
 # Owner
 from ...models import Course, Enrollment
 from accounts.api.v1.serializers import TeacherSerializer
+from lessons.api.v1.serializers import LessonListSerializer
 
 
 class CourseSerializer(serializers.ModelSerializer):
     teacher = TeacherSerializer()
-    scoreApproved = serializers.IntegerField(source='score_aproved')
+    isApproved = serializers.BooleanField(source='is_approved')
+    lessons = serializers.HyperlinkedIdentityField(
+        read_only=True,
+        lookup_field='slug',
+        view_name='courses-lessons', 
+    )
 
     class Meta:
         model = Course
         fields = (
             'id',
+            'isApproved',
             'name',
             'slug',
             'created',
             'teacher',
-            'scoreApproved'
+            'lessons'
         )
 
 
 class CourseListSerializer(serializers.ModelSerializer):
-    scoreApproved = serializers.IntegerField(source='score_aproved')
     previousCourse = CourseSerializer(source='previous_course')
     teacher = TeacherSerializer()
 
@@ -34,7 +40,6 @@ class CourseListSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'created',
-            'scoreApproved',
             'previousCourse',
             'teacher',
         )
