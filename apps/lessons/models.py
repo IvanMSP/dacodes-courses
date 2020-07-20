@@ -1,6 +1,7 @@
 # Django Core
 from django.db import models
 # Owner
+from courses.models import Course
 from reusable.models import TimeStampModel
 from reusable.constants import REQUIRED, BLANK
 from .choices import TYPE_QUESTION
@@ -16,6 +17,13 @@ class Lesson(TimeStampModel):
         verbose_name='Previous Lesson',
         on_delete=models.CASCADE,
         **BLANK
+    )
+    course = models.ForeignKey(
+        Course,
+        related_name='lessons',
+        verbose_name='Course',
+        on_delete=models.CASCADE,
+        **REQUIRED
     )
 
     def __str__(self):
