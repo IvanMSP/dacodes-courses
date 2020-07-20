@@ -13,7 +13,6 @@ class Course(TimeStampModel):
     name = models.CharField(max_length=120, **REQUIRED)
     slug = models.SlugField(max_length=120, **BLANK_NOT_NULL)
     is_approved = models.BooleanField(default=False)
-    score_aproved = models.PositiveIntegerField()
     previous_course = models.OneToOneField(
         'self',
         related_name='previous',
