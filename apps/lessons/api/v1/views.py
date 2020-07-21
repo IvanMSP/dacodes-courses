@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 # Thirdy Party Libraries
 from rest_framework import status
 from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
 # Owner
@@ -23,3 +24,8 @@ class QuestionsListView(ListAPIView, UpdateAPIView):
     def get_queryset(self):
         lesson = get_object_or_404(Lesson, pk=self.kwargs.get('pk'))
         return lesson.questions.all()
+
+
+class TakeLessonView(APIView):
+    def post(self, request):
+        pass

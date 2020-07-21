@@ -70,6 +70,8 @@ class Question(TimeStampModel):
 
 class Answer(TimeStampModel):
     text = models.CharField(max_length=120, **REQUIRED)
+    is_correct = models.BooleanField(default=False)
+    is_check = models.BooleanField(default=False)
     question = models.ForeignKey(
         Question,
         related_name='answers',

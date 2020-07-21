@@ -1,16 +1,18 @@
 # DaCodes-courses
 
-# Used Frameworks and technologies
+# Technology Stack
 
-    Django framework for build backend 
+   [Django framework 3.0.7](https://www.djangoproject.com/)
 
-    Django rest framework for build api
+   [Django rest framework 3.11 - Build API Rest Ful](https://www.django-rest-framework.org/)
 
-    Google Storage to store images
+   [Google Storage](https://cloud.google.com/storage)
 
-    Postgres - DB for production and development
+   [Firebase - Login and Register Users](https://firebase.google.com/?hl=es)
+   
+   [Postgres](https://www.postgresql.org/)
 
-    sqlite3 - DB for testing
+   [sqlite3](https://www.sqlite.org/)
 
 # Install
 
@@ -22,7 +24,7 @@ Clone the project and run the commands as show in the order inside the virtual e
 
 1. Install all the requirements
 
-    `pip install -r requirements_develop.txt`
+    `pip install -r requirements/requirements_develop.txt`
 
 2. Make migrations
 
@@ -40,15 +42,28 @@ Clone the project and run the commands as show in the order inside the virtual e
 
     `python manage.py runserver`
 
+# Test Endpoints
+
+Generate CustomToken from firebase
+
+`python firebase_generate_token.py`
+
+Request post to next endpoint Firebase for get_IDToken
+`https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken`
+
+With queryparams:
+
+    Key: FIREBASE_PROJECT_KEY
+    token: CustomToken
+    returnSecureToken: true
+
+Response:
+
+    idToken: 'eyJhbGciOiJSUzI1NiIsImtpZ...'
+
 
 # Endpoints
-    api/auth/  - Auth endpoint
-    api/courses/ - Get all courses available
-    api/courses/<str:slug>/ - Get course detail
-    api/courses/<str:slug>/lessons/ - Get all lessons of a course
-    api/courses/<username>/ - Get all courses of a student
-    api/lessons/<str:slug>/questions - Get all questions by course of a student
-
+   [Dacodes Courses API Documentation](https://www.getpostman.com/collections/67d6250cec6241b2c932)
 
 # Entity Relationship Diagram
 ![Image](https://storage.googleapis.com/bucket-dacodes-courses/Dacodes-Courses.png)

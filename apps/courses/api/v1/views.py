@@ -38,10 +38,9 @@ class CoursesLessonsView(ListAPIView):
 
 
 class EnrollmentStudent(ListAPIView):
-    lookup_field = 'username'
     permission_classes = [IsAuthenticated]
     serializer_class = EnrollmentSerializer
     
     def get_queryset(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        user = self.request.user
         return Enrollment.objects.filter(student=user).order_by('-created')
