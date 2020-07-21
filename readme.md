@@ -63,7 +63,7 @@ Response:
 
 
 # Endpoints
-   [Dacodes Courses API Documentation](https://www.getpostman.com/collections/67d6250cec6241b2c932)
+   [Dacodes Courses API Documentation](https://documenter.getpostman.com/view/11766693/T1DmDyPy)
 
 # Entity Relationship Diagram
 ![Image](https://storage.googleapis.com/bucket-dacodes-courses/Dacodes-Courses.png)
