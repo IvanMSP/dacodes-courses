@@ -22,6 +22,8 @@ Create virtual enviroment
 
 Clone the project and run the commands as show in the order inside the virtual enviroment.
 
+### Note: Download .env - enviroment's variables and Keys with format .json
+
 1. Install all the requirements
 
     `pip install -r requirements/requirements_develop.txt`
