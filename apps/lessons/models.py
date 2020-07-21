@@ -26,11 +26,6 @@ class Lesson(TimeStampModel):
         on_delete=models.CASCADE,
         **REQUIRED
     )
-    student = models.ManyToManyField(
-        User,
-        related_name='lessons',
-        verbose_name='Student',
-    )
 
     def __str__(self):
         return self.title.title()
@@ -85,3 +80,23 @@ class Answer(TimeStampModel):
 
     def __str__(self):
         return self.text
+
+
+class TakeLesson(TimeStampModel):
+    student = models.ForeignKey(
+        User,
+        related_name='takelessons',
+        verbose_name='Student',
+        on_delete=models.CASCADE,
+        **REQUIRED
+    )
+    lesson = models.ForeignKey(
+        Lesson,
+        related_name='takelessons',
+        verbose_name='Lesson',
+        on_delete=models.CASCADE,
+        **REQUIRED
+    )
+
+    def __str__(self):
+        return f'{self.student.get_full_name} take lesson {self.lesson.title}'
