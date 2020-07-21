@@ -111,6 +111,6 @@ venv.bak/
 .mypy_cache/
 
 # Settings local
-local.py
-config/settings/testing.py
+# local.py
+# config/settings/testing.py
 db.*
