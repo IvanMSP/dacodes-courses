@@ -2,6 +2,8 @@
 
 # Technology Stack
 
+   [Lucichart - Build ERD](https://www.lucidchart.com/)
+   
    [Django framework 3.0.7](https://www.djangoproject.com/)
 
    [Django rest framework 3.11 - Build API Rest Ful](https://www.django-rest-framework.org/)
