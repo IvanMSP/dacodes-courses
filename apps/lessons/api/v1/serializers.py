@@ -19,6 +19,7 @@ class TypeQuestionSerializer(serializers.ModelSerializer):
 class AnswerListSerializer(serializers.ModelSerializer):
     text = serializers.CharField(read_only=True)
     isCheck = serializers.BooleanField(source='is_check')
+    isCorrect = serializers.HiddenField(default='is_correct')
 
     class Meta:
         model = Answer
@@ -26,6 +27,7 @@ class AnswerListSerializer(serializers.ModelSerializer):
             'id',
             'text',
             'isCheck',
+            'isCorrect',
         )
 
 
